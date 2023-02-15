@@ -17,50 +17,50 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="text-center mb-5 mt-5" style="color:azure;"> Data Mahasiswa</h1>
-
                     <a href="<?= base_url('form_tambah_data') ?>" class="btn btn-primary mb-4 mt-2">+ Tambah Data</a>
-
-                    <table class="table table-success table-hover">
-                        <thead class="table-dark">
-                            <tr align="center">
-                                <th>No.</th>
-                                <th>NIM</th>
-                                <th>Nama</th>
-                                <th>Jurusan</th>
-                                <th>Alamat</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $no = 1;
-                            foreach ($data as $key => $value): ?>
-                                <tr>
-                                    <td>
-                                        <?= $no++; ?>
-                                    </td>
-                                    <td>
-                                        <?= $value['nim']; ?>
-                                    </td>
-                                    <td>
-                                        <?= $value['nama']; ?>
-                                    </td>
-                                    <td>
-                                        <?= $value['jurusan']; ?>
-                                    </td>
-                                    <td>
-                                        <?= $value['alamat']; ?>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="<?= base_url('form_edit_data/' . $value['id']) ?>"
-                                            class="btn btn-sm btn-success">EDIT</a>
-                                        <a href="<?= base_url('delete/' . $value['id']) ?>"
-                                            class="btn btn-sm btn-danger">HAPUS</a>
-                                    </td>
+                    <div class="table-responsive">
+                        <table class="table table-success table-hover">
+                            <thead class="table-dark">
+                                <tr align="center">
+                                    <th>No.</th>
+                                    <th>NIM</th>
+                                    <th>Nama</th>
+                                    <th>Jurusan</th>
+                                    <th>Alamat</th>
+                                    <th>Aksi</th>
                                 </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $no = 1;
+                                foreach ($data as $key => $value): ?>
+                                    <tr>
+                                        <td>
+                                            <?= $no++; ?>
+                                        </td>
+                                        <td>
+                                            <?= $value['nim']; ?>
+                                        </td>
+                                        <td>
+                                            <?= $value['nama']; ?>
+                                        </td>
+                                        <td>
+                                            <?= $value['jurusan']; ?>
+                                        </td>
+                                        <td>
+                                            <?= $value['alamat']; ?>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="<?= base_url('form_edit_data/' . $value['id']) ?>"
+                                                class="btn btn-sm btn-success">EDIT</a>
+                                            <a href="<?= base_url('delete/' . $value['id']) ?>"
+                                                class="btn btn-sm btn-danger">HAPUS</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
