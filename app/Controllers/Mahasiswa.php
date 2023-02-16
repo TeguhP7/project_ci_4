@@ -2,6 +2,8 @@
 namespace App\Controllers;
 
 use App\Models\MahasiswaModel;
+use Config\Services;
+
 
 class Mahasiswa extends BaseController
 {
@@ -13,7 +15,7 @@ class Mahasiswa extends BaseController
     public function index()
     {
         $data['data'] = $this->model->getData();
-        return view('dashboard', $data);
+        return view('dashboard_ajax', $data);
     }
 
 
@@ -35,6 +37,47 @@ class Mahasiswa extends BaseController
         $this->model->insertData($data);
         return redirect()->to(base_url('/'));
     }
+    public function tambah_data_ajax()
+    {
+        $validasi = Services::validation();
+        $rule = [
+            'nim' => [
+                'label' => 'Nim',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi'
+                ]
+            ]
+        ];
+
+        $validasi->setRules($rule);
+        if ($validasi->withRequest($this->request)->run()) {
+            // $nim = $this->request->getPost('nim');
+            // $nama = $this->request->getPost('nama');
+            // $jurusan = $this->request->getPost('jurusan');
+            // $alamat = $this->request->getPost('alamat');
+            // $data = [
+            //     'nim' => $nim,
+            //     'nama' => $nama,
+            //     'jurusan' => $jurusan,
+            //     'alamat' => $alamat
+            // ];
+            $data = $this->request->getPost();
+            $this->model->insertData($data);
+
+            $response = [
+                'success' => 'Data berhasil ditambahkan',
+                'error' => false
+            ];
+        } else {
+            $response = [
+                'success' => false,
+                'error' => $validasi->listErrors()
+            ];
+        }
+        return json_encode($response);
+    }
+
 
     public function form_edit_data($id)
     {

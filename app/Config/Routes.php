@@ -37,6 +37,12 @@ $routes->get('/form_edit_data/(:segment)', 'Mahasiswa::form_edit_data/$1');
 $routes->post('/edit_data', 'Mahasiswa::edit_data');
 $routes->get('/delete/(:segment)', 'Mahasiswa::delete_data/$1');
 
+// route_dengan_ajax
+$routes->post('/tambah_data_ajax', 'Mahasiswa::tambah_data_ajax');
+// $routes->get('/form_edit_data/(:segment)', 'Mahasiswa::form_edit_data/$1');
+// $routes->post('/edit_data_ajax', 'Mahasiswa::edit_data');
+// $routes->get('/delete/(:segment)', 'Mahasiswa::delete_data/$1');
+
 
 /*
  * --------------------------------------------------------------------
